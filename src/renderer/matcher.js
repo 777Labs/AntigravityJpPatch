@@ -38,10 +38,10 @@ class Matcher {
     const trimmed = text.trim();
     if (!trimmed) return null;
 
-    // キャッシュチェック
+    // キャッシュチェック（翻訳結果が存在する場合のみキャッシュを利用）
     if (this.cache.has(trimmed)) {
       const cached = this.cache.get(trimmed);
-      return cached ? text.replace(trimmed, cached) : null;
+      return text.replace(trimmed, cached);
     }
 
     let result = null;
@@ -65,13 +65,16 @@ class Matcher {
       }
     }
 
-    // キャッシュへの保存（上限チェック付き）
-    if (this.cache.size >= this.MAX_CACHE_SIZE) {
-      this.cache.clear();
+    // 翻訳が成功した場合のみキャッシュに保存
+    if (result) {
+      if (this.cache.size >= this.MAX_CACHE_SIZE) {
+        this.cache.clear();
+      }
+      this.cache.set(trimmed, result);
+      return text.replace(trimmed, result);
     }
-    this.cache.set(trimmed, result);
 
-    return result ? text.replace(trimmed, result) : null;
+    return null;
   }
 }
 

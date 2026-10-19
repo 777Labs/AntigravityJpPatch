@@ -14,9 +14,6 @@ class DomObserver {
   constructor(matcher, collector) {
     this.matcher = matcher;
     this.collector = collector;
-    this.processedNodes = new WeakSet();
-    this.pendingNodes = [];
-    this.batchTimer = null;
     this.TARGET_ATTRS = ['title', 'placeholder', 'aria-label'];
   }
 
@@ -95,29 +92,6 @@ class DomObserver {
   }
 
   /**
-   * キューに溜まったノードをバッチ処理
-   */
-  flushPending() {
-    this.batchTimer = null;
-    const nodes = this.pendingNodes;
-    this.pendingNodes = [];
-    for (let i = 0; i < nodes.length; i++) {
-      this.processNode(nodes[i]);
-    }
-  }
-
-  /**
-   * ノードの処理をデバウンスしてキューイング
-   * @param {Node} node
-   */
-  queueNode(node) {
-    this.pendingNodes.push(node);
-    if (!this.batchTimer) {
-      this.batchTimer = requestAnimationFrame(() => this.flushPending());
-    }
-  }
-
-  /**
    * 全DOMの再翻訳（カスタム辞書が更新された際に実行）
    */
   retranslateAll() {
@@ -173,7 +147,7 @@ class DomObserver {
         const m = mutations[i];
         if (m.type === 'childList') {
           for (let j = 0; j < m.addedNodes.length; j++) {
-            this.queueNode(m.addedNodes[j]);
+            this.processNode(m.addedNodes[j]);
           }
         } else if (m.type === 'characterData') {
           if (!isExcluded(m.target)) {

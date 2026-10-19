@@ -19,11 +19,7 @@ const EXCLUDED_CLASSES = [
   'prose',
   'code-block',
   'markdown',
-  'artifact-content',
-  'hljs',
-  'monaco-editor',
-  'cm-editor',
-  'token'
+  'artifact-content'
 ];
 
 /**
@@ -48,17 +44,12 @@ function isExcluded(node) {
 
 /**
  * テキストが翻訳対象として意味のある文字列かどうかを判定
- * （空白のみ、純粋な数値、単一記号などは無視）
  * @param {string} text
  * @returns {boolean}
  */
 function isValidText(text) {
   if (!text) return false;
-  const trimmed = text.trim();
-  if (trimmed.length === 0) return false;
-  // 数字や単一記号のみの場合はスキップ
-  if (/^[\d\s.,:;!?_/\-+*=<>#%&()[\]{}|~`'"\\^$]+$/.test(trimmed)) return false;
-  return true;
+  return text.trim().length > 0;
 }
 
 module.exports = {

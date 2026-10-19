@@ -62,11 +62,7 @@ const EXCLUDED_CLASSES = [
   'prose',
   'code-block',
   'markdown',
-  'artifact-content',
-  'hljs',
-  'monaco-editor',
-  'cm-editor',
-  'token'
+  'artifact-content'
 ];
 
 /**
@@ -91,17 +87,12 @@ function isExcluded(node) {
 
 /**
  * テキストが翻訳対象として意味のある文字列かどうかを判定
- * （空白のみ、純粋な数値、単一記号などは無視）
  * @param {string} text
  * @returns {boolean}
  */
 function isValidText(text) {
   if (!text) return false;
-  const trimmed = text.trim();
-  if (trimmed.length === 0) return false;
-  // 数字や単一記号のみの場合はスキップ
-  if (/^[\d\s.,:;!?_/\-+*=<>#%&()[\]{}|~`'"\\^$]+$/.test(trimmed)) return false;
-  return true;
+  return text.trim().length > 0;
 }
 
 
@@ -145,10 +136,10 @@ class Matcher {
     const trimmed = text.trim();
     if (!trimmed) return null;
 
-    // キャッシュチェック
+    // キャッシュチェック（翻訳結果が存在する場合のみキャッシュを利用）
     if (this.cache.has(trimmed)) {
       const cached = this.cache.get(trimmed);
-      return cached ? text.replace(trimmed, cached) : null;
+      return text.replace(trimmed, cached);
     }
 
     let result = null;
@@ -172,13 +163,16 @@ class Matcher {
       }
     }
 
-    // キャッシュへの保存（上限チェック付き）
-    if (this.cache.size >= this.MAX_CACHE_SIZE) {
-      this.cache.clear();
+    // 翻訳が成功した場合のみキャッシュに保存
+    if (result) {
+      if (this.cache.size >= this.MAX_CACHE_SIZE) {
+        this.cache.clear();
+      }
+      this.cache.set(trimmed, result);
+      return text.replace(trimmed, result);
     }
-    this.cache.set(trimmed, result);
 
-    return result ? text.replace(trimmed, result) : null;
+    return null;
   }
 }
 
@@ -260,9 +254,6 @@ class DomObserver {
   constructor(matcher, collector) {
     this.matcher = matcher;
     this.collector = collector;
-    this.processedNodes = new WeakSet();
-    this.pendingNodes = [];
-    this.batchTimer = null;
     this.TARGET_ATTRS = ['title', 'placeholder', 'aria-label'];
   }
 
@@ -341,29 +332,6 @@ class DomObserver {
   }
 
   /**
-   * キューに溜まったノードをバッチ処理
-   */
-  flushPending() {
-    this.batchTimer = null;
-    const nodes = this.pendingNodes;
-    this.pendingNodes = [];
-    for (let i = 0; i < nodes.length; i++) {
-      this.processNode(nodes[i]);
-    }
-  }
-
-  /**
-   * ノードの処理をデバウンスしてキューイング
-   * @param {Node} node
-   */
-  queueNode(node) {
-    this.pendingNodes.push(node);
-    if (!this.batchTimer) {
-      this.batchTimer = requestAnimationFrame(() => this.flushPending());
-    }
-  }
-
-  /**
    * 全DOMの再翻訳（カスタム辞書が更新された際に実行）
    */
   retranslateAll() {
@@ -419,7 +387,7 @@ class DomObserver {
         const m = mutations[i];
         if (m.type === 'childList') {
           for (let j = 0; j < m.addedNodes.length; j++) {
-            this.queueNode(m.addedNodes[j]);
+            this.processNode(m.addedNodes[j]);
           }
         } else if (m.type === 'characterData') {
           if (!isExcluded(m.target)) {
