@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+
+# Build artifacts
+dist/*.tmp
+dist/*.ja-tmp
+
+# Logs
+*.log
+npm-debug.log*
+patch.log
+watcher.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

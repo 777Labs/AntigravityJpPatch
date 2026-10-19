@@ -1,0 +1,25 @@
+{
+  "name": "antigravity-ja",
+  "version": "2.0.0",
+  "description": "Google Antigravity UI Japanese Localization Mod & Patch System",
+  "main": "dist/patcher.js",
+  "scripts": {
+    "build": "node tools/build.js",
+    "extract": "node tools/extract-dict.js",
+    "validate": "node tools/validate-dict.js",
+    "patch": "node dist/patcher.js",
+    "restore": "node dist/patcher.js --restore",
+    "status": "node dist/patcher.js --status"
+  },
+  "keywords": [
+    "antigravity",
+    "google-antigravity",
+    "i18n",
+    "japanese",
+    "localization",
+    "electron",
+    "mod"
+  ],
+  "author": "aigen",
+  "license": "MIT"
+}
