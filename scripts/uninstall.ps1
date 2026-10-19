@@ -1,4 +1,4 @@
-# Google Antigravity 日本語化パッチ アンインストーラー (復元)
+﻿# Google Antigravity 日本語化パッチ アンインストーラー (復元)
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $Host.UI.RawUI.WindowTitle = "Google Antigravity 日本語化パッチ 復元"
 

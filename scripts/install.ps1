@@ -1,4 +1,4 @@
-# Google Antigravity 日本語化パッチ インストーラー (v2.0.0)
+﻿# Google Antigravity 日本語化パッチ インストーラー (v2.0.0)
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $Host.UI.RawUI.WindowTitle = "Google Antigravity 日本語化パッチャー (v2.0.0)"
 

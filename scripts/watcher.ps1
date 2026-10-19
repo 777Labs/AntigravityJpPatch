@@ -1,4 +1,4 @@
-# Antigravity 日本語化 見張り役（バックグラウンド監視スクリプト）
+﻿# Antigravity 日本語化 見張り役（バックグラウンド監視スクリプト）
 # Google Antigravity の自動アップデート等で app.asar が更新された際、自動で日本語化パッチを再適用します。
 
 $ErrorActionPreference = "Stop"
