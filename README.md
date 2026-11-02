@@ -8,6 +8,12 @@ Google Antigravity（デスクトップ版）の画面UIおよびAIアシスタ�
 
 ---
 
+## 📸 スクリーンショット
+
+![Antygravity Screenshot](screenshot.png)
+
+---
+
 ## 📌 対応バージョン
 
 - **対応アプリケーション**: Google Antigravity (Desktop / Electron 版)
