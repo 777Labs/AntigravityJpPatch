@@ -1,18 +1,25 @@
-# Dependency directories
+# Distribution build output (Assets to be uploaded via GitHub Releases)
+dist/
+publish/
+output/
+
+# Dependencies
 node_modules/
 
-# Build artifacts
-dist/*.tmp
-dist/*.ja-tmp
+# Source code and internal implementation (Private: Keep local only)
+src/
+dict/
+scripts/
+tests/
+install.bat
+uninstall.bat
+package-lock.json
+AGENT.md
+SPECIFICATION.md
 
-# Logs
-*.log
-npm-debug.log*
-patch.log
-watcher.log
-
-# OS & Editor files
+# Temporary & Cache files
+*.tmp
+*.bak
+backup-meta.json
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
