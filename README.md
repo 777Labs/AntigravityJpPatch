@@ -17,7 +17,7 @@ Google Antigravity（デスクトップ版）の画面UIおよびAIアシスタ�
 ## 📌 対応バージョン
 
 - **対応アプリケーション**: Google Antigravity (Desktop / Electron 版)
-- **確認済み最新バージョン**: **Google Antigravity v2.28.2 まで動作確認・対応済み**
+- **確認済み最新バージョン**: **Google Antigravity v2.29.0 まで動作確認・対応済み**
 
 ---
 
