@@ -1,6 +1,6 @@
 {
   "name": "antigravity-ja",
-  "version": "2.29.0",
+  "version": "2.31.1-r1",
   "description": "Google Antigravity 完全日本語化パッチ（Antigravity-JP-Patcher）",
   "type": "module",
   "main": "src/index.js",
