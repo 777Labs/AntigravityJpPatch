@@ -10,7 +10,10 @@ Google Antigravity（デスクトップ版）の画面UIおよびAIアシスタ�
 
 ## 📸 スクリーンショット
 
-![Antygravity Screenshot](screenshot.png)
+![Antygravity Screenshot](screenshot1.png)
+![Antygravity Screenshot](screenshot2.png)
+![Antygravity Screenshot](screenshot3.png)
+![Antygravity Screenshot](screenshot4.png)
 
 ---
 
