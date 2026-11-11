@@ -15,6 +15,20 @@ Google Antigravity（デスクトップ版）の画面UIおよびAI応答を包�
 - **Antigravity v2.31.1 でのパッチ適用／復元エラー（「起動中」安全ガード停止）の修正**:
   - v2.31.1 よりウィンドウを閉じた後もバックグラウンドに残留する場合があるサイドカープロセス（`Antigravity.exe`）および Antigravity 配下の `language_server.exe` を安全に検出・終了・解放待機できるようプロセスガードを強化
   - インストーラー／アンインストーラー（`install.bat` / `uninstall.bat`）の確認プロンプトを `[Y/n]`（Enter のみでも自動終了）に改善し、手動終了選択後もバックグラウンドプロセスが残っている場合は安全にクリーンアップして続行するよう修正
+- **v2.31.1 新設・変更UI項目の日本語化追加**:
+  - **「設定」>「一般」タブ**:
+    - **インターフェースレイアウト（Interface Layout）**: 「Knowledge Work」→「ナレッジワーク」、「Simplified interface for research, writing, and everyday tasks.」→「調査、執筆、日常業務向けのシンプルなインターフェース。」、「Software Engineering」→「ソフトウェアエンジニアリング」、「Full interface for coding, developer tools, and managing agents.」→「コーディング、開発ツール、エージェント管理向けのフル機能インターフェース。」
+    - **権限・音声モード・詳細設定**: ローカル／リモート権限（「このコンピュータ」「リモート」）、Gemini Live 音声設定（「音声」「未設定」「変更」「Antigravity の音声を選択」等）、「新しい会話」ボタンの開始ワークスペース設定
+  - **「設定」>「アプリケーション」>「詳細設定」**:
+    - 「Automatic Check for Updates」→「更新プログラムを自動的に確認」およびその説明文、リモートコントロール詳細・WSL 連携項目を日本語化
+  - **「設定」>「外観」>「詳細設定」**:
+    - 「Chat Layout」→「チャットレイアウト」、幅オプション「Fill」→「最大幅」、「Markdown Artifact Width」→「Markdown アーティファクトの幅」、「Context and Quota Indicator」→「コンテキスト・利用枠インジケーター」、「Terminal Placement」→「ターミナルの配置」、「Accessibility」→「アクセシビリティ」、「Custom Context Menus」→「カスタムコンテキストメニュー」、「Screen Reader Mode」→「スクリーンリーダーモード」、フォントサイズ・カラーピッカー・コードプレビューを日本語化
+  - **「設定」>「ブラウザ」タブ（および「ブラウザ操作ルール」編集サブ画面）**:
+    - ヘッダー説明文、「Side Panel Preview」→「サイドパネルプレビュー」、「Enable Browser Tools」→「ブラウザツールを有効化」、「Browser Javascript Execution Policy」→「ブラウザ JavaScript 実行ポリシー」、「Browser Actuation Permissions」→「ブラウザ操作の権限」、「Execute URLs」→「URL の操作」、「Download files」→「ファイルのダウンロード」、権限選択肢「Ask」→「確認」等を日本語化
+  - **「新しい会話」時の初期ウェルカムメッセージ（全6パターン）**:
+    - ユーザー名あり／なしのローテーション挨拶メッセージ全パターン（「こんにちは、$1さん。今日は何を作りましょうか？」「おかえりなさい、$1さん。どこから再開しましょうか？」「こんにちは、$1さん。次は何をしましょうか？」等）およびホーム画面のヒントカードを日本語化
+  - **「設定」>「アカウント」・「ショートカット」の追加項目**:
+    - 「Remote Agents Data」→「リモートエージェントのデータ」、「Mute Voice Mic」→「音声マイクをミュート」、「Mute Voice Speaker」→「音声スピーカーをミュート」等を日本語化
 - **v2.31.1 内部ロジック誤置換の防止とシステムトレイ日本語化**:
   - `beyondcorpPac.js`・`cablev2.js`・`guestWebMcpController.js`・`wcvZOrderController.js`・`utils.js` 等の内部通信／プロトコル／キー制御ファイルを静的文字列置換から保護し、動作不具合を防止
   - 新設されたシステムトレイ（`tray.js` / `main.js`）における動的エージェント数表示（「実行中のエージェントはありません」「○ 個のエージェントが実行中」）および「終了」（Quit）メニューを日本語化
