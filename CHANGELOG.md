@@ -1,17 +1,17 @@
 # Changelog
 
-## v2.31.1-r2
+## v2.31.2-r1
 
 Google Antigravity（デスクトップ版）の画面UIおよびAI応答を包括的に日本語化するパッチツールです。
 
 > **【注意】** 本ツールは Google 公式のツールではなく、非公式の有志製パッチ（Unofficial Patch）です。
 
-- **対応バージョン**: **Google Antigravity v2.31.1 まで動作確認・対応済み**
+- **対応バージョン**: **Google Antigravity v2.31.2 まで動作確認・対応済み**
 - **配布形態**: ZIPアーカイブ配布（ソース非公開・スタンドアロン実行形式）
 
 ---
 
-**■ 今回の更新内容 (v2.31.1-r2)**
+**■ 今回の更新内容 (v2.31.2-r1)**
 - **全スラッシュコマンド（`/`）・組み込みスキル・`@` メンション・コマンドパレット説明文の完全日本語化**:
   - チャット入力欄の `/` メニュー（「+」→「アクション」）に表示される全システムコマンド（`/btw`, `/goal`, `/compact`, `/schedule`, `/browser`, `/browser-vision`, `/plan`, `/grill-me`, `/teamwork`, `/learn`, `/boost`, `/deepagent`, `/review-agent`）および全組み込みスキル（`/agy-customizations`, `/antigravity-guide`, `/automation`, `/generative_ui`, `/migrate-agent-settings`, `/migrate-workflows`, `/plugin`, `/swarm` 等）の説明文をすべて日本語化
   - `/g` や `/p` など文字を入力して絞り込み検索した際（ハイライト分割・先頭省略発生時）にも日本語の説明文が崩れず維持されるよう動的翻訳エンジンを強化
